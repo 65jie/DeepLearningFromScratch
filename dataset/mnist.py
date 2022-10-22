@@ -34,7 +34,9 @@ def _download(file_name):
         return
 
     print("Downloading " + file_name + " ... ")
-    urllib.request.urlretrieve(url_base + file_name, file_path)
+    data = urllib.parse.urlencode({'User-Agent': 'Mozilla/5.0'})
+    data = data.encode('ascii')
+    urllib.request.urlretrieve(url_base + file_name, file_path, None, data)
     print("Done")
     
 def download_mnist():
